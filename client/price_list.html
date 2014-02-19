@@ -1,0 +1,36 @@
+<template name="price_list">
+<h2>Price List</h2>
+  <table class="table table-hover">
+    <thead>
+     <tr>
+       <th>
+        InsureandGo.com - Budget
+       </th>
+       <th>
+        InsureandGo.com - Silver
+       </th>
+       <th>
+        InsureandGo.com - Gold
+       </th>
+       <th>
+        InsureandGo.com - Black
+       </th>
+       <th>
+        InsureandGo.com - Annual Silver
+       </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      {{#each price}}
+      <td>{{price.amount1}}</td>
+      <td>{{price.amount2}}</td>
+      <td>{{price.amount3}}</td>
+      <td>{{price.amount4}}</td>
+      <td>{{price.amount5}}</td>
+      {{/each}}
+     </tr>
+    </tbody>
+     
+  </table>
+</template>
