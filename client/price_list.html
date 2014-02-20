@@ -1,42 +1,79 @@
 <template name="price_list">
-  <div class="panel panel-info">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><h4>Price Comparision</h4></div>
+<div class="pael panel-info">
+  <div class="">
+    <div class="pull-right">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" value="{{fcFilterSearchable.criteria}}" data-fc-search-target="search-box">
+        </div>
+        <button type="submit" class="btn btn-success fc-search-trigger" data-fc-search-trigger="search-box">Submit</button>
+        {{#each available}}
+          <a href="#" class="fc-search-fields">{{#if active}}Disable{{else}}Enable{{/if}} {{title}} filter</a>
+          {{/each}}
+      <a href="#" class="fc-filter btn btn-primary {{#if fcFilterObj.isActive 'trip' 'Single Trip'}}active{{/if}}" data-fc-filter-field="trip" data-fc-filter-value="Single Trip" >
+        Single Trip
+      </a>
+      <a href="#" class="fc-filter btn btn-primary {{#if fcFilterObj.isActive 'trip' 'Annual Trip'}}active{{/if}}" data-fc-filter-field="trip" data-fc-filter-value="Annual Trip" >
+        Annual Trip
+      </a>
+        {{#if fcFilterSearchable.criteria}}<button type="button" class="btn btn-danger fc-search-clear">Reset</button>{{/if}}
+      </form>
+      {{#if fcFilterActive}}
+      <div class="navbar-form pull-right">
+        {{#each fcFilterActive}}
+        <a href="#" class="btn btn-info fc-filter-clear">{{title}}: {{operator}} {{value}}</a>
+        {{/each}}
+      </div>
+      {{/if}}
+
+   </div>
+    <h4>Price Comparision</h4>
+  </div>
   <div class="table-responsive">
-  <table class="table table-hover table-bordered">
-    <thead >
-     <tr class="info">
-       <th>
-        InsureandGo.com - Budget
-       </th>
-       <th>
-        InsureandGo.com - Silver
-       </th>
-       <th>
-        InsureandGo.com - Gold
-       </th>
-       <th>
-        InsureandGo.com - Black
-       </th>
-       <th>
-        InsureandGo.com - Annual Silver
-       </th>
-     </tr>
-    </thead>
-    <tbody>
-      {{#each price}}
-       <tr>
+    <table class="table table-hover table-bordered">
+      <thead >
+        <tr class="info">
+          <th class="fc-sort" data-fc-sort="amount0">
+            InsureandGo.com - Budget
+            {{#if fcSort.amount0.desc}}(des){{/if}}
+            {{#if fcSort.amount0.asc}}(asc){{/if}}
+          </th>
+          <th class="fc-sort" data-fc-sort="amount1">
+            InsureandGo.com - Silver
+            {{#if fcSort.amount1.desc}}(des){{/if}}
+            {{#if fcSort.amount1.asc}}(asc){{/if}}
+          </th>
+          <th class="fc-sort" data-fc-sort="amount2">
+            InsureandGo.com - Gold
+            {{#if fcSort.amount2.desc}}(des){{/if}}
+            {{#if fcSort.amount2.asc}}(asc){{/if}}
+          </th>
+          <th class="fc-sort" data-fc-sort="amount3">
+            InsureandGo.com - Black
+            {{#if fcSort.amount3.desc}}(des){{/if}}
+            {{#if fcSort.amount3.asc}}(asc){{/if}}
+          </th>
+          <th class="fc-sort" data-fc-sort="amount4">
+            InsureandGo.com - Annual Silver
+            {{#if fcSort.amount4.desc}}(des){{/if}}
+            {{#if fcSort.amount4.asc}}(asc){{/if}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each fcResults}}
+      <tr>
         <td>{{amount0}}</td>
         <td>{{amount1}}</td>
         <td>{{amount2}}</td>
         <td>{{amount3}}</td>
         <td>{{amount4}}</td>
-       </tr>
-     {{/each}}
-    </tbody>
-     
-  </table>
+      </tr>
+      {{/each}}
+      </tbody>
+
+    </table>
   </div>
-  </div>
+</div>
   </div>
 </template>
