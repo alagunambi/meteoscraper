@@ -1,8 +1,9 @@
 <template name="price_list">
 <h2>Price List</h2>
-  <table class="table table-hover">
-    <thead>
-     <tr>
+  <div class="table-responsiv">
+  <table class="table table-hover table-bordered">
+    <thead >
+     <tr class="info">
        <th>
         InsureandGo.com - Budget
        </th>
@@ -21,16 +22,17 @@
      </tr>
     </thead>
     <tbody>
-     <tr>
       {{#each price}}
-      <td>{{price.amount1}}</td>
-      <td>{{price.amount2}}</td>
-      <td>{{price.amount3}}</td>
-      <td>{{price.amount4}}</td>
-      <td>{{price.amount5}}</td>
-      {{/each}}
-     </tr>
+       <tr>
+        <td>{{amount0}}</td>
+        <td>{{amount1}}</td>
+        <td>{{amount2}}</td>
+        <td>{{amount3}}</td>
+        <td>{{amount4}}</td>
+       </tr>
+     {{/each}}
     </tbody>
      
   </table>
+  </div>
 </template>

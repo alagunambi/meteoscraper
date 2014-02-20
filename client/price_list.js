@@ -1,5 +1,5 @@
 Template.price_list.helpers({
  price: function() {
-  return Price_list.find();
- } 
+  return PriceList.find({}, {sort: {_id: -1}, limit: 5});
+ }
 });
